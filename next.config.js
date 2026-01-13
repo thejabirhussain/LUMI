@@ -1,12 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: false,
   transpilePackages: ['hume', '@humeai/voice-react'],
   webpack: (config, { isServer }) => {
     config.resolve.extensionAlias = {
       '.js': ['.js', '.ts', '.tsx'],
       '.jsx': ['.jsx', '.tsx'],
     };
-    
+
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,

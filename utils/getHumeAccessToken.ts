@@ -6,6 +6,10 @@ export const getHumeAccessToken = async () => {
   const apiKey = process.env.HUME_API_KEY;
   const secretKey = process.env.HUME_SECRET_KEY;
 
+  console.log("DEBUG: getHumeAccessToken called");
+  console.log("DEBUG: Using API Key starting with:", apiKey?.substring(0, 5));
+
+
   if (!apiKey || !secretKey) {
     throw new Error('Missing required environment variables (HUME_API_KEY or HUME_SECRET_KEY)');
   }
