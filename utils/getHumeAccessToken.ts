@@ -9,19 +9,19 @@ export const getHumeAccessToken = async () => {
   console.log("DEBUG: getHumeAccessToken called");
   console.log("DEBUG: Using API Key starting with:", apiKey?.substring(0, 5));
 
-
   if (!apiKey || !secretKey) {
     throw new Error('Missing required environment variables (HUME_API_KEY or HUME_SECRET_KEY)');
   }
 
-  const accessToken = await fetchAccessToken({
+  const tokenResult = await fetchAccessToken({
     apiKey: String(process.env.HUME_API_KEY),
     secretKey: String(process.env.HUME_SECRET_KEY),
   });
 
-  if (accessToken === "undefined") {
-    throw new Error('Unable to get access token');
+  // fetchAccessToken returns a string directly (28 characters is the correct format)
+  if (typeof tokenResult !== 'string' || !tokenResult) {
+    throw new Error(`Invalid token format. Expected string, got: ${typeof tokenResult}`);
   }
 
-  return accessToken ?? null;
+  return tokenResult;
 };

@@ -42,7 +42,26 @@ export default function ClientComponent({
           }, 200);
         }}
         onError={(error) => {
-          toast.error(error.message);
+          const errorMessage = error.message || String(error);
+          
+          // Check if it's a token-related error
+          if (
+            errorMessage.includes("token") ||
+            errorMessage.includes("Token") ||
+            errorMessage.includes("authentication") ||
+            errorMessage.includes("Unauthorized") ||
+            errorMessage.includes("Not Found")
+          ) {
+            console.error("Token-related error detected:", errorMessage);
+            toast.error(
+              "Authentication error. Please try starting a new session.",
+              {
+                description: "The connection token may have expired.",
+              }
+            );
+          } else {
+            toast.error(errorMessage);
+          }
         }}
       >
         <Messages ref={ref} />
