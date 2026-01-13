@@ -14,8 +14,8 @@ export default function Controls() {
     <div
       className={
         cn(
-          "fixed bottom-0 left-0 w-full p-4 pb-6 flex items-center justify-center",
-          "bg-gradient-to-t from-card via-card/90 to-card/0",
+          "fixed bottom-0 left-0 w-full p-4 pb-8 flex items-center justify-center",
+          "bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none",
         )
       }
     >
@@ -35,46 +35,53 @@ export default function Controls() {
               opacity: 0,
             }}
             className={
-              "p-4 bg-card border border-border/50 rounded-full flex items-center gap-4"
+              "pointer-events-auto p-2 bg-card/90 backdrop-blur-md border border-border/50 rounded-full shadow-2xl flex items-center gap-4 transition-all hover:scale-[1.02]"
             }
           >
-            <Toggle
-              className={"rounded-full"}
-              pressed={!isMuted}
-              onPressedChange={() => {
-                if (isMuted) {
-                  unmute();
-                } else {
-                  mute();
-                }
-              }}
-            >
-              {isMuted ? (
-                <MicOff className={"size-4"} />
-              ) : (
-                <Mic className={"size-4"} />
-              )}
-            </Toggle>
-
-            <div className={"relative grid h-8 w-48 shrink grow-0"}>
-              <MicFFT fft={micFft} className={"fill-current"} />
+            <div className="p-1">
+              <Toggle
+                className={cn(
+                  "rounded-full size-12 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground transition-all duration-300",
+                  "hover:bg-accent/20"
+                )}
+                pressed={!isMuted}
+                onPressedChange={() => {
+                  if (isMuted) {
+                    unmute();
+                  } else {
+                    mute();
+                  }
+                }}
+              >
+                {isMuted ? (
+                  <MicOff className={"size-5 opacity-60"} />
+                ) : (
+                  <Mic className={"size-5"} />
+                )}
+              </Toggle>
             </div>
 
-            <Button
-              className={"flex items-center gap-1 rounded-full"}
-              onClick={() => {
-                disconnect();
-              }}
-              variant={"destructive"}
-            >
-              <span>
-                <Phone
-                  className={"size-4 opacity-50 fill-current"}
-                  strokeWidth={0}
-                />
-              </span>
-              <span>End Call</span>
-            </Button>
+            <div className={"relative grid h-10 w-48 shrink grow-0 px-2"}>
+              <MicFFT fft={micFft} className={"fill-primary opacity-60"} />
+            </div>
+
+            <div className="p-1">
+              <Button
+                className={"flex items-center justify-center rounded-full px-6 py-6 bg-red-500/10 hover:bg-red-500/20 text-red-600 border border-red-200/50 transition-all"}
+                onClick={() => {
+                  disconnect();
+                }}
+                variant={"ghost"}
+              >
+                <span>
+                  <Phone
+                    className={"size-5 fill-current"}
+                    strokeWidth={2}
+                  />
+                </span>
+                <span className="ml-2 font-medium">End</span>
+              </Button>
+            </div>
           </motion.div>
         ) : null}
       </AnimatePresence>

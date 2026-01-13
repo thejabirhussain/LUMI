@@ -1,25 +1,88 @@
+# Coach Lumi™ - Voice Therapy Companion
+
 <div align="center">
-  <img src="https://storage.googleapis.com/hume-public-logos/hume/hume-banner.png">
-  <h1>EVI Next.js App Router Example</h1>
+  <h3>Professional, Empathic, AI-Powered Voice Therapy</h3>
+  <p>A premium voice therapy application powered by Hume AI's Empathic Voice Interface (EVI). Designed with a focus on calmness, empathy, and professional care.</p>
 </div>
 
-![preview.png](preview.png)
+## ✨ Features
 
-## Overview
+- **Empathic Voice Interface**: Real-time, voice-based therapy sessions with emotional intelligence.
+- **Therapeutic UI/UX**: A calming "Meet Coach Lumi" experience using a Teal & Gold palette.
+- **Live Expression Analysis**: Visualizes emotional nuance during conversations.
+- **Secure & Private**: Built with privacy in mind.
 
-This project features a sample implementation of Hume's [Empathic Voice Interface](https://hume.docs.buildwithfern.com/docs/empathic-voice-interface-evi/overview) using Hume's React SDK. Here, we have a simple EVI that uses the Next.js App Router.
+## 🚀 Getting Started
 
-## Project deployment
+Follow these instructions to set up and run the Coach Lumi application on your local machine.
 
-Click the button below to deploy this example project with Vercel:
+### Prerequisites
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fhumeai%2Fhume-evi-next-js-starter&env=HUME_API_KEY,HUME_SECRET_KEY)
+- **Node.js** (v18.17.0 or later)
+- **Package Manager**: `npm`, `pnpm`, or `yarn`
+- **Hume AI Account**: You need an account at [portal.hume.ai](https://portal.hume.ai) to generate API keys.
 
-Below are the steps to completing deployment:
+### 🛠️ Installation
 
-1. Create a Git Repository for your project.
-2. Provide the required environment variables. To get your API key and Client Secret key, log into the portal and visit the [API keys page](https://beta.hume.ai/settings/keys).
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd lumi
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # or
+   pnpm install
+   # or
+   yarn install
+   ```
+
+### 🔑 Configuration
+
+1. **Set up Environment Variables:**
+   
+   Duplicate the example environment file:
+   ```bash
+   cp .env.example .env.local
+   ```
+
+2. **Add your Hume Credentials:**
+   
+   Open `.env.local` and fill in your keys from the [Hume API Keys Page](https://portal.hume.ai/settings/keys):
+
+   ```env
+   # Your Hume API Key
+   HUME_API_KEY=your_api_key_here
+
+   # Your Hume Secret Key
+   HUME_SECRET_KEY=your_secret_key_here
+
+   # (Optional) Your Custom EVI Configuration ID
+   # If you have customized the prompt/voice in Hume Portal
+   NEXT_PUBLIC_HUME_CONFIG_ID=your_config_id_here
+   ```
+
+### 🏃‍♂️ Running Locally
+
+Start the development server:
+
+```bash
+npm run dev
+# or
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser to meet Coach Lumi.
+
+## 📚 Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org/) (App Router)
+- **AI**: [Hume AI](https://hume.ai/) (EVI SDK)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
 
 ## Support
 
-If you have questions, require assistance, or wish to engage in discussions pertaining to this starter template, [please reach out to us on Discord](https://link.hume.ai/discord).
+For any issues related to the Hume API, refer to the [Hume Docs](https://hume.docs.buildwithfern.com/docs/empathic-voice-interface-evi/overview).

@@ -30,10 +30,11 @@ const Messages = forwardRef<
                 <motion.div
                   key={msg.type + index}
                   className={cn(
-                    "w-[80%]",
-                    "bg-card",
-                    "border border-border rounded-xl",
-                    msg.type === "user_message" ? "ml-auto" : ""
+                    "w-[80%] p-5 shadow-sm relative",
+                    "font-sans text-base leading-relaxed",
+                    msg.type === "user_message"
+                      ? "ml-auto bg-primary text-primary-foreground rounded-[2rem] rounded-tr-sm"
+                      : "bg-white text-secondary-foreground rounded-[2rem] rounded-tl-sm border border-border/30",
                   )}
                   initial={{
                     opacity: 0,
@@ -48,28 +49,20 @@ const Messages = forwardRef<
                     y: 0,
                   }}
                 >
-                  <div className={"flex items-center justify-between pt-4 px-3"}>
+                  <div className={"flex items-center justify-between pb-2"}>
                     <div
                       className={cn(
-                        "text-xs capitalize font-medium leading-none opacity-50 tracking-tight"
+                        "text-xs font-bold tracking-wider uppercase opacity-70",
+                        msg.type === "user_message" ? "text-primary-foreground" : "text-primary"
                       )}
                     >
                       {msg.message.role}
                     </div>
-                    <div
-                      className={cn(
-                        "text-xs capitalize font-medium leading-none opacity-50 tracking-tight"
-                      )}
-                    >
-                      {msg.receivedAt.toLocaleTimeString(undefined, {
-                        hour: "numeric",
-                        minute: "2-digit",
-                        second: undefined,
-                      })}
-                    </div>
                   </div>
-                  <div className={"pb-3 px-3"}>{msg.message.content}</div>
-                  <Expressions values={{ ...msg.models.prosody?.scores }} />
+                  <div className={"pb-1"}>{msg.message.content}</div>
+                  <div className="opacity-60 transform scale-90 origin-left -ml-2">
+                    <Expressions values={{ ...msg.models.prosody?.scores }} />
+                  </div>
                 </motion.div>
               );
             }
