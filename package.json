@@ -44,5 +44,8 @@
     "postcss": "^8",
     "tailwindcss": "^4.1.10",
     "typescript": "^5"
+  },
+  "overrides": {
+    "hume": "$hume"
   }
 }
