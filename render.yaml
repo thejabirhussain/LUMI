@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: lumi-voice-therapy
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    branch: main
+    envVars:
+      - key: NODE_VERSION
+        value: 20.11.0 # Specify a compatible Node.js version
+      - key: HUME_API_KEY
+        sync: false # User needs to input this manually in Render Dashboard
+      - key: HUME_SECRET_KEY
+        sync: false
+      - key: NEXT_PUBLIC_HUME_CONFIG_ID
+        sync: false
