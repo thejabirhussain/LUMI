@@ -86,3 +86,11 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to meet Coac
 ## Support
 
 For any issues related to the Hume API, refer to the [Hume Docs](https://hume.docs.buildwithfern.com/docs/empathic-voice-interface-evi/overview).
+
+---
+
+## Ownership and licence
+
+Copyright (c) 2026 **Mohammed Jabir Hussain Shaik** ([@thejabirhussain](https://github.com/thejabirhussain)). **All rights reserved.**
+
+This is proprietary work, published for viewing and evaluation only. Copying, reusing, modifying, redistributing, using it to train AI models, or presenting any part of it as your own is **not permitted** without written permission. See [LICENSE](LICENSE). Permission requests: thejabirhussain@gmail.com
